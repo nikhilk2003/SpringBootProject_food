@@ -1,13 +1,6 @@
 package com.app.food.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -21,7 +14,6 @@ public class OrderDetails {
     private String details;
     private int quantity;
 
-    
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -37,11 +29,10 @@ public class OrderDetails {
     @OneToOne(mappedBy = "orderDetails", cascade = CascadeType.ALL)
     private Payment payment;
 
-    
-    public OrderDetails() {} 
+    public OrderDetails() {}
 
-    public OrderDetails(Long id, String details, int quantity, Customer customer, FoodItem foodItem,
-            Restaurant restaurant, Payment payment) {
+    public OrderDetails(Long id, String details, int quantity, Customer customer,
+                        FoodItem foodItem, Restaurant restaurant, Payment payment) {
         this.id = id;
         this.details = details;
         this.quantity = quantity;
@@ -50,5 +41,5 @@ public class OrderDetails {
         this.restaurant = restaurant;
         this.payment = payment;
     }
-
 }
+
