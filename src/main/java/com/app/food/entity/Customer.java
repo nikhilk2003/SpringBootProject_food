@@ -10,9 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
-
-
-
 @Entity
 @Data
 public class Customer {
@@ -28,7 +25,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<OrderDetails> orders;
 
-    public Customer() {} 
+    public Customer() {
+    }
 
     public Customer(Long id, String name, String email, String phoneNumber, List<OrderDetails> orders) {
         this.id = id;
